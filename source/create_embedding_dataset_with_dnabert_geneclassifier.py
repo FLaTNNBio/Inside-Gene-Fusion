@@ -7,9 +7,8 @@ def load_dataset(file_path, label):
 
     with open(file_path, 'r') as f:
         for line in f:
-            if not line.startswith('@'):  # Salta righe con metadati
+            if not line.startswith('@'):  
                 sequence = line.strip()
-                # Se necessario, kmerizza la sequenza (ignora se già kmerizzata)
                 kmerized_sequence = kmerize_sequence(sequence)
                 sequences.append(kmerized_sequence)
                 labels.append(label)
@@ -19,13 +18,11 @@ def load_dataset(file_path, label):
 def kmerize_sequence(sequence, k=6):
     return " ".join([sequence[i:i+k] for i in range(0, len(sequence), k)])
 
-# Funzione per ottenere l'embedding di una singola sequenza
 def get_embedding(sequence,model,tokenizer):
     inputs = tokenizer(sequence, return_tensors="pt", padding='max_length', truncation=True, max_length=100)
     with torch.no_grad():
         outputs = model(**inputs, output_hidden_states=True)
     last_hidden_state = outputs.hidden_states[-1]
-    # Calcola la media lungo la dimensione della sequenza (batch_size, sequence_length, hidden_size)
     sequence_embedding = last_hidden_state.mean(dim=1)
     return sequence_embedding.squeeze()
 
@@ -44,8 +41,8 @@ def main(dtc,dtnc):
     labels_list = []
 
     for i, sequence in enumerate(all_sequences):
-        embedding = get_embedding(sequence,model,tokenizer)  # Genera embedding
-        label = all_labels[i]  # Ottieni la label corrispondente
+        embedding = get_embedding(sequence,model,tokenizer)  
+        label = all_labels[i]  
 
         embeddings_list.append(embedding)
         labels_list.append(label)
@@ -53,7 +50,6 @@ def main(dtc,dtnc):
     embeddings_tensor = torch.stack(embeddings_list)
     labels_tensor = torch.tensor(labels_list)
 
-    # Salva embeddings e label in un file .pt
     torch.save({'embeddings': embeddings_tensor, 'labels': labels_tensor}, 'embeddings_with_labels.pt')
 
     print("Embeddings e label salvati nel file embeddings_with_labels.pt.")
