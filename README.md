@@ -85,6 +85,12 @@ To train a pre-trained DNABERT model on chimeric or not chimeric sequences run:
 ```bash
 python3 source/dnabert_fusion_fine_tune.py
 ```
+Created the De Bruijn graphs and Fine-Tuned the DNABERT model on chimeric and not chimeric sequences, is possible to train the GNNs model runnign the script:
+```bash
+python3 source/gene_fusion_graph.py
+```
+
+## Hypergraph Based Tool
 
 
 
