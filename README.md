@@ -24,4 +24,13 @@ Run the following command to prepare your data for the DNABERT model:
 python3 gene_classifier_pre_process_data_filter.py
 ```
 
-The prepocess scripts are needed to train and/or use the pre-trained models. 
+Feel free to modify the k-mers and n_word variables to achieve personalized goals. The preprocessing scripts are necessary to train and/or use the pre-trained models. 
+
+### Fine-Tune DNABERT for Gene Classification
+To fine-tune the pre-trained model DNABERT for Gene Classification run the following command:
+```bash
+python3 dnabert_geneclassifier_fine_tune.py
+```
+Ensure that you modify the n_labels variable to match the number of labels in your customized dataset.
+
+
