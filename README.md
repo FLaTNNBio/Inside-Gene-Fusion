@@ -103,4 +103,5 @@ To recognize the cliques into De Bruijn graphs and the cliques, run the script:
 python3 source/gene_fusion_hypergraph.py
 ```
 
-All the models are saved for future uses.
+## Conclusions
+All the dataset and the model are saved at the end of each script, to give the possibity to work with them and develop new scripts.
