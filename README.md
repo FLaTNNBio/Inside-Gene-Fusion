@@ -67,7 +67,19 @@ Now the Fusion Classifier can be trained running the following script:
 ```bash
 python3 gene_fusion_dnn.py
 ```
+## Graph Based Tool
+To overcome the limitations of the sentence-based approach, we employ a more advanced graph-based approach, utilizing De Bruijn graphs. By applying GNNs, we
+are able to capture the complex topological dependencies between nodes through message-passing mechanisms. GNNs allow nodes to aggregate information from neighboring nodes,
+effectively learning intricate patterns that are essential for accurately identifying fusion events.
 
+To efficiently create De-Bruijn graphs to run the experiments using GNNs the following script has to be run:
+```bash
+python3 pre_process_data_graph_and_hyper.py
+```
+We proposed a novel approach to effciently train a GNNs on DNA sequneces.
+For each kmerized sequence a De Bruijn graph is created, the informations inside the nodes of the graphs are crucial in order to train a pre-trained DNABERT model on the assumptions that the De Bruijn graphs
+represents chimeric or not chimeric sequences.
+As the previously approach, 
 
 
 
