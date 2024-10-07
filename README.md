@@ -98,4 +98,9 @@ approach is similar to that used in the graph-based approach, with the differenc
 A crucial aspect of defining a hypergraph is establishing the rule for constructing hyperedges. In our approach, we used the maximal cliques within De Bruijn graphs to generate hyperedges, capturing the structural complexity of reads. In a De Bruijn graph, nodes represent k-mers, and edges indicate overlaps between consecutive k-mers. A clique is a subset of nodes where every
 pair is connected, representing complete connectivity. In this context, cliques highlight regions where k-mers overlap across multiple positions, forming continuous subsequences. 
 
+To recognize the cliques into De Bruijn graphs and the cliques, run the script:
+```bash
+python3 source/gene_fusion_hypergraph.py
+```
 
+All the models are saved for future uses.
