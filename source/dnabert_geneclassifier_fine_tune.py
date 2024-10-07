@@ -100,8 +100,9 @@ def load_DNABERT_model(model_name):
     return load_model
 
 def main():
+    n_labels = 18
     df_fused = pd.read_csv('./sentences.csv')
-    tokenizer, model = DNABERT_setting("zhihan1996/DNA_bert_6",18)
+    tokenizer, model = DNABERT_setting("zhihan1996/DNA_bert_6",n_labels)
     dataset = create_dataset(df_fused,tokenizer)
     train_DNABERT(model,tokenizer, dataset)
     model.save_pretrained('./fine_tuned_gene_classifier_dna_bert')
