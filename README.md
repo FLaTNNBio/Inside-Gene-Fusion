@@ -79,7 +79,7 @@ python3 pre_process_data_graph_and_hyper.py
 We proposed a novel approach to efficiently train a GNNs on DNA sequneces.
 For each kmerized sequence a De Bruijn graph is created, the informations inside the nodes of the graphs are crucial in order to train a pre-trained DNABERT model on the assumptions that the De Bruijn graphs
 represents chimeric or not chimeric sequences.
-As the previously approach, a DNABERT model is trained in order to exctract the embeddings of the kmers inside the De Bruijn nodes. This process is crucial to generate informative data for the GNNs model in order to have a more and precisious classifier model.
+As the previously approach, a pre-trained DNABERT model is fine-tuned to exctract the embeddings representation of the kmers inside the De Bruijn graph's nodes. This process is crucial to generate informative data for the GNNs model in order to have a more and precisious classifier model.
 
 To train a pre-trained DNABERT model on chimeric or not chimeric sequences run:
 ```bash
