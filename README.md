@@ -27,9 +27,12 @@ to generate the sentence
 
 ### Pre-process the Data for Gene Classification
 
-To run the DNABERT model, the data must be prepared by using a specific pre-processing script.
+#### From k-mers to sentences
+The k-mers, i.e., all the substrings of length k which can be extracted from a DNA or RNA sequence, allow the local characteristics of
+the sequences to be considered while lessening the impact of sequencing errors. In this work we represent a read using the list of its k-mers. This representation
+allows the model to learn the local characteristics of reads and perform accurate classification. The solution proposed is based on the definition of a model capable of analyzing and classifying lists of k-mers. More precisely, given a read of length n and a value k, we extract the list of its n − k + 1 k-mers. We split such list in consecutive segments of n_words k-mers. Then, the k-mers in a segment are joined together in a sentence by using a space character as a separator, thus producing a set of sentences. The following figure shows an example of sentences generated from an input read, using k = 4 and n_words = 3 (that is, 3 k-mers per sentence).
 
-Run the following command to prepare your data for the DNABERT model:
+Run the following command to prepare your data for the DNABERT Gene Classifier model:
 
 ```bash
 python3 gene_classifier_pre_process_data_filter.py
