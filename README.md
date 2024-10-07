@@ -38,15 +38,21 @@ Run the following command to prepare your data for the DNABERT Gene Classifier m
 python3 gene_classifier_pre_process_data_filter.py
 ```
 
-Feel free to modify the ```k-mers``` and ```n_word``` variables to achieve personalized goals. The preprocessing scripts are necessary to train and/or use the pre-trained models. 
-
 ### Fine-Tune DNABERT for Gene Classification
 To fine-tune the pre-trained model DNABERT for Gene Classification run the following command:
 ```bash
 python3 dnabert_geneclassifier_fine_tune.py
 ```
-Ensure that you modify the n_labels variable to match the number of labels in your customized dataset.
+Ensure that you modify the ```n_labels``` variable to match the number of labels in your customized dataset.
 
-### Train Fusion Model
-To identify a DNA sequence as chimeric or not, a Deep Learning model is trained on the embedding representation of the sequences  
+### Train Fusion Classifier Model
+To identify a DNA sequence as chimeric or not, a Fusion Classifier model is trained on the embedding representation of the sequences given from the fine-tuned DNABERT.
+The sentence-based representation previously described above is in turn exploited by a DL-based model for the detection of chimeric reads,
+built as an ensemble of two sub-models: Gene classifier and Fusion classifier. The goal of Gene classifier is to classify a sentence into the gene from which it is
+generated. It is trained using all the sentences derived from non-chimeric reads extracted from the transcripts of a reference set of genes (see the following figure).
 
+To train Fusion classifier, a set of chimeric and non-chimeric reads is generated from the same reference set of genes used for training Gene classifier. Then, for
+each read all the sentences of length n_words are generated and then provided as input to Gene classifier, previously trained. Gene classifier includes an embedding
+layer, as well as several classification layers. The outputs of the embedding layer for all the generated sentences are grouped into a single embedding matrix, which
+constitutes the input for Fusion classifier. Then, Fusion classifier uses such embedding matrices to distinguish between reads that arise from the fusion of
+two genes and reads that originate from a single gene.
