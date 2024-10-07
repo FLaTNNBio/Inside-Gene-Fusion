@@ -35,13 +35,13 @@ allows the model to learn the local characteristics of reads and perform accurat
 Run the following command to prepare your data for the DNABERT Gene Classifier model:
 
 ```bash
-python3 gene_classifier_pre_process_data_filter.py
+python3 source/gene_classifier_pre_process_data_filter.py
 ```
 
 ### Fine-Tune DNABERT for Gene Classification
 To fine-tune the pre-trained model DNABERT for Gene Classification run the following command:
 ```bash
-python3 dnabert_geneclassifier_fine_tune.py
+python3 source/dnabert_geneclassifier_fine_tune.py
 ```
 Ensure that you modify the ```n_labels``` variable to match the number of labels in your customized dataset.
 
@@ -60,12 +60,12 @@ two genes and reads that originate from a single gene.
 
 Run the followin script to create an embedding dataset for your sequences:
 ```bash
-python3 create_embedding_dataset_with_dnabert_geneclassifier.py
+python3 source/create_embedding_dataset_with_dnabert_geneclassifier.py
 ```
 
 Now the Fusion Classifier can be trained running the following script:
 ```bash
-python3 gene_fusion_dnn.py
+python3 source/gene_fusion_dnn.py
 ```
 ## Graph Based Tool
 To overcome the limitations of the sentence-based approach, we employ a more advanced graph-based approach, utilizing De Bruijn graphs. By applying GNNs, we
@@ -74,7 +74,7 @@ effectively learning intricate patterns that are essential for accurately identi
 
 To efficiently create De-Bruijn graphs to run the experiments using GNNs the following script has to be run:
 ```bash
-python3 pre_process_data_graph_and_hyper.py
+python3 source/pre_process_data_graph_and_hyper.py
 ```
 We proposed a novel approach to efficiently train a GNNs on DNA sequneces.
 For each kmerized sequence a De Bruijn graph is created, the informations inside the nodes of the graphs are crucial in order to train a pre-trained DNABERT model on the assumptions that the De Bruijn graphs
