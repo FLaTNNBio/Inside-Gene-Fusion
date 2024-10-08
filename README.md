@@ -106,5 +106,6 @@ To recognize the cliques into De Bruijn graphs and the cliques, run the script:
 python3 source/gene_fusion_hypergraph.py
 ```
 
-## Conclusions
+## Trained Models
+The DNABERT fine-tuned models can be retrived to the following link:[Fine Tuned Models](https://drive.google.com/drive/folders/1hfqLJO-TxMcThhgNtDNPQOKnA0zsMJ9L)
 All the dataset and the model are saved at the end of each script, to give the possibity to work with them and develop new scripts.
