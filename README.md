@@ -8,6 +8,9 @@ In order to use the proposed tools, the requiremnets are needed.
 ```bash
 pip installpip install -r requirements.txt
 ```
+## Download Gene Trascripts
+Into the data folder, there is the file ```download_transcript.py``` needed to dowload the gene transcript inside the file ```gene_panel.txt``` 
+Run the script on the ```data```'s parent folder.
 
 ## Text-Based Tool
 The first model that is defined within this project is the **gene classifier** model. 
