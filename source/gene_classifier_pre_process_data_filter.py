@@ -44,6 +44,40 @@ def kmerize_seq(reads_path,read_file,kmer_file, k):
             p.close()
         return kmers
 
+
+import subprocess
+
+
+def run_shredder(input_fastq, out_file):
+    """
+    Runs the `gt shredder` command with specified input and output files.
+
+    Parameters:
+    - input_fastq: Path to the input FASTQ file.
+    - out_file: Path to the output file.
+    """
+    # Command to execute
+    command = [
+        'gt', 'shredder',
+        '-minlength', '150',
+        '-maxlength', '150',
+        '-overlap', '0',
+        '-clipdesc', 'no',
+        input_fastq
+    ]
+
+    # Redirect output to a file
+    with open(out_file, 'w') as outfile:
+        # Run the command
+        result = subprocess.run(command, stdout=outfile, stderr=subprocess.PIPE, text=True)
+
+        # Check for errors
+        if result.returncode != 0:
+            print(f"Error occurred: {result.stderr}")
+        else:
+            print(f"Shredding completed, output saved to: {out_file}")
+
+# Run the shredding process
 def gt_shredder_df(fastq_files,trans_path):
     out_dir = "./gene-fusion-kmer-main/data/gt_shredder_150/"
     for fastq in fastq_files:
@@ -55,7 +89,8 @@ def gt_shredder_df(fastq_files,trans_path):
         print(out_file)
         f = open(out_file,"w")
         f.close()
-        !gt shredder -minlength 150 -maxlength 150 -overlap 0 -clipdesc no {input_fastq} > {out_file}
+        run_shredder(input_fastq, out_file)
+        #gt shredder -minlength 150 -maxlength 150 -overlap 0 -clipdesc no {input_fastq} > {out_file}
         for file_ext in ['.sds', '.ois', '.md5', '.esq', '.des', '.ssp']:
             rm_file = trans_path + os.path.splitext(fastq)[0] + ".fastq" + file_ext
             #print(rm_file)
