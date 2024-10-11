@@ -2,7 +2,7 @@
 
 The proposed tool enables the analysis of DNA sequences using three alignment-free techniques, combining text-based and *Graph Learning* approaches in one tool. 
 We conducted an in-depth exploration, from an ML perspective, of the problem of recognizing hidden patterns 
-that allow us to identify *chimeric RNAs* deriving from oncogenic *gene fusions*.  We approach gene fusion as the chromosomal rearrangement that joins two genes into a single *fusion gene, 
+that allow us to identify *chimeric RNAs* deriving from oncogenic *gene fusions*.  We approach gene fusion as the chromosomal rearrangement that joins two genes into a single *fusion gene*, 
 resulting in a *chimeric* transcript composed of two parts, each originating from one of the fused genes. 
 We propose three distinct ML-based methods, each one based on a specific representation technique for the RNA-Seq 
 reads: *sentence-based*, *graph-based*, and *hypergraph-based*. 
