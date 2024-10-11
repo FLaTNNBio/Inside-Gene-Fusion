@@ -24,7 +24,7 @@ pip install -r requirements.txt
 Into the data folder, there is the file ```download_transcript.py``` needed to dowload the gene transcript inside the file ```genes_panel.txt``` 
 After the processing of the genes, into the folder ```transcripts``` is possible to find the fastq files of the trancripts for each gene.
 
-## Text-Based Tool
+## 1. Sentence-Based Tool
 The first model that is defined within this project is the **gene classifier** model. 
 The goal of this model is to correctly classify sentences in the source gene. 
 More formally, we define a sentence as a string consisting of *n* words each 
