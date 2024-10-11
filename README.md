@@ -4,11 +4,11 @@ The proposed tool enables the analysis of DNA sequences using three alignment-fr
 We conducted an in-depth exploration, from an ML perspective, of the problem of recognizing hidden patterns 
 that allow us to identify *chimeric RNAs* deriving from oncogenic *gene fusions*.  
 We approach gene fusion as the chromosomal rearrangement that joins two genes into a single *fusion gene, 
-resulting in a \textit{chimeric} transcript composed of two parts, each originating from one of the fused genes. 
+resulting in a *chimeric* transcript composed of two parts, each originating from one of the fused genes. 
 We propose three distinct ML-based methods, each one based on a specific representation technique for the RNA-Seq 
-reads: \textit{sentence-based}, \textit{graph-based}, and \textit{hypergraph-based}. 
-The \textit{sentence-based} method leverages techniques from NLP, treating the nucleotide sequences as textual data, 
-to extract semantic patterns from the reads. The \textit{graph-based} approach advances this by employing De Bruijn graphs 
+reads: *sentence-based*, *graph-based*, and *hypergraph-based*. 
+The *sentence-based* method leverages techniques from NLP, treating the nucleotide sequences as textual data, 
+to extract semantic patterns from the reads. The *graph-based* approach advances this by employing De Bruijn graphs 
 and *Graph Neural Networks* (GNNs) to capture complex topological relationships. Finally, the *hypergraph-based* 
 approach introduces the use of *Hypergraph Neural Networks* (HGNNs), allowing us to model higher-order interactions by 
 constructing *hyperedges* from maximal cliques in the De Bruijn graph. 
