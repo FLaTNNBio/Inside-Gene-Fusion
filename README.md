@@ -20,6 +20,12 @@ In order to use the proposed tools, the requiremnets are needed.
 ```bash
 pip install -r requirements.txt
 ```
+It's necessary the gt-shredder from genome tool
+
+```bash
+apt install genometools
+```
+
 ## Download Gene Trascripts
 Into the data folder, there is the file ```download_transcript.py``` needed to dowload the gene transcript inside the file ```genes_panel.txt``` 
 After the processing of the genes, into the folder ```transcripts``` is possible to find the fastq files of the trancripts for each gene.
