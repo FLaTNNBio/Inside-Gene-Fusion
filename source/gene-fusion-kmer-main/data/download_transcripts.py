@@ -84,7 +84,7 @@ def read_gene_list(filename):
         return [line.strip() for line in file.readlines()]
 
 def main():
-    process_genes('gene_panel.txt')
+    process_genes('genes_panel.txt')
 
 if __name__ == "__main__":
     main()
