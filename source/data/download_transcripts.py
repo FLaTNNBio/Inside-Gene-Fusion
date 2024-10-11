@@ -1,101 +1,79 @@
-from typing import Final
-from typing import Dict
-from typing import List
-
-from dotenv import load_dotenv
-from tqdm import tqdm
 import requests
-import sys
 import os
+import time
 
-"""
-1 - Rest API Ensemble.org https://rest.ensembl.org
-2 - GET xrefs/symbol/:species/:symbol https://rest.ensembl.org/documentation/info/xref_external
-3 - GET sequence/id/:id https://rest.ensembl.org/documentation/info/sequence_id
-"""
+# Function to fetch transcripts for a gene using Ensembl API
+def fetch_transcripts(gene_name):
+    server = "https://rest.ensembl.org"
+    ext = f"/lookup/symbol/homo_sapiens/{gene_name}?expand=1"
+    
+    headers = {"Content-Type": "application/json"}
+    response = requests.get(server + ext, headers=headers)
+    
+    if not response.ok:
+        print(f"Error fetching data for gene: {gene_name}")
+        return None
+    
+    gene_data = response.json()
+    
+    if 'Transcript' in gene_data:
+        transcripts = [transcript['id'] for transcript in gene_data['Transcript']]
+        return transcripts
+    else:
+        print(f"No transcripts found for gene: {gene_name}")
+        return []
 
-SERVER: Final = "https://rest.ensembl.org"
+# Function to fetch DNA sequence for a transcript
+def fetch_transcript_sequence(transcript_id):
+    server = "https://rest.ensembl.org"
+    ext = f"/sequence/id/{transcript_id}"
+    
+    headers = {"Content-Type": "text/plain"}
+    response = requests.get(server + ext, headers=headers)
+    
+    if not response.ok:
+        print(f"Error fetching sequence for transcript: {transcript_id}")
+        return None
+    
+    return response.text
 
+# Function to read genes from a file
+def read_gene_list(filename):
+    with open(filename, 'r') as file:
+        return [line.strip() for line in file.readlines()]
 
-def get_ids(
-        gene_value: str
-) -> List[str]:
-    # init query
-    ext: str = f'/xrefs/symbol/homo_sapiens/{gene_value}?object_type=gene'
-    # get result
-    r = requests.get(
-        SERVER + ext,
-        headers={
-            'Content-Type': 'application/json'
-        })
-    # if response status is not okay
-    if not r.ok:
-        r.raise_for_status()
-        sys.exit()
+# Function to create a file for each gene and save its transcript sequences
+def save_transcript_sequences(gene_name, transcript_sequences):
+    filename = f"{gene_name}_transcripts.txt"
+    with open(filename, 'w') as file:
+        for transcript_id, sequence in transcript_sequences.items():
+            file.write(f">{transcript_id}\n")
+            file.write(f"{sequence}\n\n")
 
-    # init list of results
-    id_list: List[str] = []
-    data_response = r.json()
-    # add each result in id_list array
-    for data in data_response:
-        id_list.append(data['id'])
+# Main function to process each gene, fetch transcripts and their DNA sequences
+def process_genes(input_file):
+    gene_list = read_gene_list(input_file)
 
-    return id_list
+    for gene in gene_list:
+        print(f"Processing gene: {gene}")
+        transcripts = fetch_transcripts(gene)
+        
+        if transcripts:
+            transcript_sequences = {}
+            for transcript in transcripts:
+                print(f"Fetching sequence for transcript: {transcript}")
+                sequence = fetch_transcript_sequence(transcript)
+                if sequence:
+                    transcript_sequences[transcript] = sequence
+                time.sleep(1)  # Pause to avoid overwhelming the API server
+            
+            if transcript_sequences:
+                save_transcript_sequences(gene, transcript_sequences)
+                print(f"Sequences for {gene} saved.")
+        time.sleep(1)  # Pause between genes
 
+def main():
+  process_genes('gene_panel.txt' )
 
-def get_sequences(
-        id_sequence_value: str
-) -> str:
-    # init query
-    ext: str = f'/sequence/id/{id_sequence_value}?type=cdna;multiple_sequences=1'
-    # get result
-    r = requests.get(
-        SERVER + ext,
-        headers={
-            'Content-Type': 'text/x-fasta'
-        })
-    # if response status is not okay
-    if not r.ok:
-        r.raise_for_status()
-        sys.exit()
-
-    # return results
-    return r.text
-
-
-def create_file(
-        root_dir: str,
-        gene_value: str,
-        sequence_value: str
-) -> None:
-    with open(os.path.join(root_dir, f'{gene_value}.fastq'), 'a') as fasta_file:
-        fasta_file.write(sequence_value)
-
-
-if __name__ == '__main__':
-    # init gene dictionary
-    gene_dict: Dict[str, List[str]] = {}
-    # init paths
-    load_dotenv(dotenv_path=os.path.join(os.getcwd(), '.env'))
-    genes_panel_path: str = os.path.join(
-        os.getcwd(),
-        os.getenv('GENES_PANEL_LOCAL_PATH')
-    )
-    transcript_dir_path: str = os.path.join(
-        os.getcwd(),
-        os.getenv('TRANSCRIPT_LOCAL_DIR')
-    )
-
-    # check if transcripts dir exists
-    if not os.path.exists(transcript_dir_path):
-        os.makedirs(transcript_dir_path)
-
-    # for each gene in genes_panel_file
-    with open(genes_panel_path, 'r') as genes_panel_file:
-        for gene in tqdm(genes_panel_file, desc='Downloading the transcripts of the genes...'):
-            # remove new line character
-            gene: str = gene.rstrip('\n')
-            gene_dict[gene] = get_ids(gene)
-            for sequence_id in gene_dict[gene]:
-                sequence = get_sequences(sequence_id)
-                create_file(transcript_dir_path, gene, sequence)
+if __name__ == "__main__":
+  main()
