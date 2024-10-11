@@ -73,7 +73,7 @@ def process_genes(input_file):
         time.sleep(1)  # Pause between genes
 
 def main():
-  process_genes('gene_panel.txt' )
+  process_genes('genes_panel.txt' )
 
 if __name__ == "__main__":
   main()
