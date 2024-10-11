@@ -31,6 +31,8 @@ a model capable of analyzing and classifying lists of k-mers.
 The reads are represented as sets of sentences composed of k-
 mers (*sentence-based representation*), to leverage BERT to uncover the hidden
 semantic structures within genomic data (see the following Figure). 
+  <img src="image/sentences" alt="Sentences" width="700"/>
+
 Such a sentence-based representation is in turn exploited by
 a DL-based model for the detection of chimeric reads, built as
 an ensemble of two sub-models: Gene classifier and Fusion
