@@ -7,3 +7,4 @@ matplotlib
 torch-geometric
 networkx
 ast
+python-dotenv
