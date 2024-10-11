@@ -21,7 +21,7 @@ In order to use the proposed tools, the requiremnets are needed.
 pip install -r requirements.txt
 ```
 ## Download Gene Trascripts
-Into the data folder, there is the file ```download_transcript.py``` needed to dowload the gene transcript inside the file ```gene_panel.txt``` 
+Into the data folder, there is the file ```download_transcript.py``` needed to dowload the gene transcript inside the file ```genes_panel.txt``` 
 Run the script on the ```data```'s parent folder.
 
 ## Text-Based Tool
