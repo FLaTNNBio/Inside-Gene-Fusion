@@ -25,21 +25,22 @@ Into the data folder, there is the file ```download_transcript.py``` needed to d
 After the processing of the genes, into the folder ```transcripts``` is possible to find the fastq files of the trancripts for each gene.
 
 ## 1. Sentence-Based Tool
-The first model that is defined within this project is the **gene classifier** model. 
-The goal of this model is to correctly classify sentences in the source gene. 
-More formally, we define a sentence as a string consisting of *n* words each 
-separated by space, where each word is a *kmer*.
-
-Starting with a read, we generate all possible kmers, of length ```len_kmer```, of the read. 
-Let ```n_words``` be the number of kmers that make up a sentence, then all possible subsets of consecutive 
-kmers of cardinality ```n_words``` are generated. This allows all possible sentences to be generated from a 
-read. The goal of the classifier is to correctly classify a sentence to the source gene of the read used 
-to generate the sentence
-
-### Key Features
-- **Gene Classification**: Fine-tune a pre-trained DNABERT model to classify the DNA sequence to its corresponding gene.
-- **Chimeric Sequence Detection**: Utilize DNABERT embedding representations to train a deep learning model to classify DNA sequences as either chimeric or non-chimeric.
-
+### Overview
+This approach is based on the definition of
+a model capable of analyzing and classifying lists of k-mers.
+The reads are represented as sets of sentences composed of k-
+mers (*sentence-based representation*), to leverage BERT to uncover the hidden
+semantic structures within genomic data (see the following Figure). 
+Such a sentence-based representation is in turn exploited by
+a DL-based model for the detection of chimeric reads, built as
+an ensemble of two sub-models: Gene classifier and Fusion
+classifier. The goal of Gene classifier is to classify a sentence
+into the gene from which it is generated. It is trained using all
+the sentences derived from non-chimeric reads extracted from
+the transcripts of a reference set of genes (see the following Figure).
+To train Fusion classifier, a set of chimeric and non-
+chimeric reads is generated from the same reference set of
+genes used for training Gene classifier.
 ### Pre-process the Data for Gene Classification
 
 #### From k-mers to sentences
