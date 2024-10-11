@@ -6,7 +6,7 @@ This consists of a double-classifier framework which first classifies the sequen
 
 In order to use the proposed tools, the requiremnets are needed.
 ```bash
-pip installpip install -r requirements.txt
+pip install -r requirements.txt
 ```
 ## Download Gene Trascripts
 Into the data folder, there is the file ```download_transcript.py``` needed to dowload the gene transcript inside the file ```gene_panel.txt``` 
