@@ -37,18 +37,24 @@ def fetch_transcript_sequence(transcript_id):
     
     return response.text
 
-# Function to read genes from a file
-def read_gene_list(filename):
-    with open(filename, 'r') as file:
-        return [line.strip() for line in file.readlines()]
+# Function to create the "transcripts" directory if it doesn't exist
+def create_transcripts_directory():
+    directory = "transcripts"
+    if not os.path.exists(directory):
+        os.makedirs(directory)
 
-# Function to create a file for each gene and save its transcript sequences
+# Function to create a FASTQ file for each gene and save its transcript sequences
 def save_transcript_sequences(gene_name, transcript_sequences):
-    filename = f"{gene_name}_transcripts.txt"
+    # Create the directory if it doesn't exist
+    create_transcripts_directory()
+
+    # Save each gene transcript in a FASTQ format
+    filename = f"transcripts/{gene_name}.fastq"
     with open(filename, 'w') as file:
         for transcript_id, sequence in transcript_sequences.items():
-            file.write(f">{transcript_id}\n")
-            file.write(f"{sequence}\n\n")
+            # Format FASTQ entries
+            file.write(f">{transcript_id}\n")  # FASTQ identifier
+            file.write(f"{sequence}\n")       # DNA sequence
 
 # Main function to process each gene, fetch transcripts and their DNA sequences
 def process_genes(input_file):
@@ -69,11 +75,16 @@ def process_genes(input_file):
             
             if transcript_sequences:
                 save_transcript_sequences(gene, transcript_sequences)
-                print(f"Sequences for {gene} saved.")
+                print(f"Sequences for {gene} saved in FASTQ format.")
         time.sleep(1)  # Pause between genes
 
+# Function to read genes from a file
+def read_gene_list(filename):
+    with open(filename, 'r') as file:
+        return [line.strip() for line in file.readlines()]
+
 def main():
-  process_genes('gene_panel.txt' )
+    process_genes('gene_panel.txt')
 
 if __name__ == "__main__":
-  main()
+    main()
