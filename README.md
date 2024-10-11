@@ -1,8 +1,21 @@
 # Inside Gene Fusion
 
-The proposed tool enables the analysis of DNA sequences using three alignment-free techniques, combining text-based and *Graph Learning* approaches in one tool. The tool integrates state-of-the-art methods to classify DNA sequences by leveraging deep learning models.
-We propose a novel DL-based model that learns to recognize the hidden patterns that allow us to identify chimeric RNAs deriving from oncogenic gene fusions. 
-This consists of a double-classifier framework which first classifies the sequence of the k-mers of a read, and then infers the chimeric information by giving as input the list of k-mer classes to a transformer-based classifier
+The proposed tool enables the analysis of DNA sequences using three alignment-free techniques, combining text-based and *Graph Learning* approaches in one tool. 
+We conducted an in-depth exploration, from an ML perspective, of the problem of recognizing hidden patterns 
+that allow us to identify *chimeric RNAs* deriving from oncogenic *gene fusions*.  
+We approach gene fusion as the chromosomal rearrangement that joins two genes into a single *fusion gene, 
+resulting in a \textit{chimeric} transcript composed of two parts, each originating from one of the fused genes. 
+We propose three distinct ML-based methods, each one based on a specific representation technique for the RNA-Seq 
+reads: \textit{sentence-based}, \textit{graph-based}, and \textit{hypergraph-based}. 
+The \textit{sentence-based} method leverages techniques from NLP, treating the nucleotide sequences as textual data, 
+to extract semantic patterns from the reads. The \textit{graph-based} approach advances this by employing De Bruijn graphs 
+and *Graph Neural Networks* (GNNs) to capture complex topological relationships. Finally, the *hypergraph-based* 
+approach introduces the use of *Hypergraph Neural Networks* (HGNNs), allowing us to model higher-order interactions by 
+constructing *hyperedges* from maximal cliques in the De Bruijn graph. 
+Through these progressively more sophisticated representations, we show that deeper models are better equipped to uncover 
+hidden patterns critical for detecting chimeric reads. As the representational depth increases, so does the capacity to 
+capture the underlying structure of the genomic data. However, this improvement comes with the need for more advanced and 
+computationally demanding ML models, to handle the complexity of graph-based data.
 
 In order to use the proposed tools, the requiremnets are needed.
 ```bash
