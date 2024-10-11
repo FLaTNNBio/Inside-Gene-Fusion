@@ -23,7 +23,7 @@ pip install -r requirements.txt
 It's necessary the gt-shredder from genome tool
 
 ```bash
-apt install genometools
+pip install genometools
 ```
 
 ## Download Gene Trascripts
