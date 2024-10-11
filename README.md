@@ -22,7 +22,7 @@ pip install -r requirements.txt
 ```
 ## Download Gene Trascripts
 Into the data folder, there is the file ```download_transcript.py``` needed to dowload the gene transcript inside the file ```genes_panel.txt``` 
-Run the script on the ```data```'s parent folder.
+After the processing of the genes, into the folder ```transcripts``` is possible to find the fastq files of the trancripts for each gene.
 
 ## Text-Based Tool
 The first model that is defined within this project is the **gene classifier** model. 
