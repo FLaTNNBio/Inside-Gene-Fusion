@@ -16,7 +16,7 @@ hidden patterns critical for detecting chimeric reads. As the representational d
 capture the underlying structure of the genomic data. However, this improvement comes with the need for more advanced and 
 computationally demanding ML models, to handle the complexity of graph-based data.
 
-In order to use the proposed tools, the requiremnets are needed, for techinical reasons Ubuntu environtment is advised.
+In order to use the proposed tools, the requiremnets are needed, for techinical reasons **Ubuntu** environment is advised.
 ```bash
 pip install -r requirements.txt
 ```
