@@ -30,6 +30,10 @@ apt install genometools
 Into the data folder, there is the file ```download_transcript.py``` needed to dowload the gene transcript inside the file ```genes_panel.txt``` 
 After the processing of the genes, into the folder ```transcripts``` is possible to find the fastq files of the trancripts for each gene.
 
+```bash
+python3 source/gene_classifier_pre_process_data_filter.py
+```
+
 ## 1. Sentence-Based Tool
 ### Overview
 This approach is based on the definition of
