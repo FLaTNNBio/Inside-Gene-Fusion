@@ -77,8 +77,8 @@ def main():
     k = 6  # Set the k-mer size (you can change this value)
 
     # Process the FASTQ file and generate the DataFrame
-    df_ch = process_fastq('dataset_chimeric2.fastq', 1, k)
-    df_no_ch = process_fastq('dataset_non_chimeric.fastq', 0, k)
+    df_ch = process_fastq('source/gene-fusion-kmer-main/dataset/dataset_chimeric2.fastq', 1, k)
+    df_no_ch = process_fastq('source/gene-fusion-kmer-main/dataset/dataset_non_chimeric.fastq', 0, k)
     df_fused = pd.concat([df_ch, df_no_ch], ignore_index=True)
     print(df_fused.head())
     df_fused.to_csv('./df_fused.csv', index=False)
