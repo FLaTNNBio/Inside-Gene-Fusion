@@ -28,7 +28,7 @@ def get_embedding(sequence,model,tokenizer):
 
 def main(dtc,dtnc):
 
-    model_path = './multi_gene_classificator_model'
+    model_path = './fine_tuned_gene_classifier_dna_bert'
     tokenizer = BertTokenizer.from_pretrained("zhihan1996/DNA_bert_6")
     model = BertForSequenceClassification.from_pretrained(model_path)
 
