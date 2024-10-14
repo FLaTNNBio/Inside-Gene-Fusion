@@ -52,7 +52,7 @@ def main(dtc,dtnc):
 
     torch.save({'embeddings': embeddings_tensor, 'labels': labels_tensor}, 'embeddings_with_labels.pt')
 
-    print("Embeddings e label salvati nel file embeddings_with_labels.pt.")
+    print("Embeddings e label salvati nel file embeddings_with_labels.pt")
 
 if __name__ == "__main__":
     dtc = "source/gene-fusion-kmer-main/dataset/dataset_chimeric2.fastq"
