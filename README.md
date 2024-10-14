@@ -17,7 +17,7 @@ capture the underlying structure of the genomic data. However, this improvement 
 computationally demanding ML models, to handle the complexity of graph-based data.
 
 ## Requirements 
-### Ubutu
+### Ubuntu
 In order to use the proposed tools, the requiremenets are needed, for techinical reasons **Ubuntu** environment is advised.
 ```bash
 pip install -r requirements.txt
