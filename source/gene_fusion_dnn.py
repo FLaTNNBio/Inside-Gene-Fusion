@@ -239,7 +239,7 @@ def main():
     num_classes = 2
 
     logging.shutdown()  
-    logging.info("Start Training...")
+    print("Start Training...")
     train_dnn(model, train_dataset, val_dataset, test_dataset, training_args, criterion, optimizer, num_classes)
 
 if __name__ == "__main__":
