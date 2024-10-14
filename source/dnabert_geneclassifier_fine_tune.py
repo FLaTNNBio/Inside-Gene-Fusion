@@ -101,7 +101,7 @@ def load_DNABERT_model(model_name):
 
 def main():
     n_labels = 18
-    df_fused = pd.read_csv('./sentences.csv')
+    df_fused = pd.read_csv('./source/gene-fusion-kmer-main/dataset/sentences.csv')
     tokenizer, model = DNABERT_setting("zhihan1996/DNA_bert_6",n_labels)
     dataset = create_dataset(df_fused,tokenizer)
     train_DNABERT(model,tokenizer, dataset)
