@@ -6,6 +6,7 @@ from csv import reader
 import numpy as np
 from sklearn.model_selection import train_test_split
 import io
+import subprocess
 import itertools
 
 def seq2kmer(seq, k):
@@ -42,11 +43,7 @@ def kmerize_seq(reads_path,read_file,kmer_file, k):
                     p.write(kmer + ' ')
                 p.write('\n')
             p.close()
-        return kmers
-
-
-import subprocess
-
+        return
 
 def run_shredder(input_fastq, out_file):
     """
