@@ -38,7 +38,7 @@ def kmerize_seq(reads_path,read_file,kmer_file, k):
             kmers = seq2kmer(line, k)
             #kmers, kmers_dict = update_kmers_dict(kmers,kmers_dict)
             #print(kmers)
-            with open(kmer_file, 'w') as p: # c'era una 'a' di append al posto di 'w' se non funge rimetti la 'a'
+            with open(kmer_file, 'a') as p: # c'era una 'a' di append al posto di 'w' se non funge rimetti la 'a'
                 for kmer in kmers:
                     p.write(kmer + ' ')
                 p.write('\n')
@@ -64,7 +64,7 @@ def run_shredder(input_fastq, out_file):
     ]
 
     # Redirect output to a file
-    with open(out_file, 'w') as outfile:
+    with open(out_file, 'a') as outfile:
         # Run the command
         result = subprocess.run(command, stdout=outfile, stderr=subprocess.PIPE, text=True)
 
