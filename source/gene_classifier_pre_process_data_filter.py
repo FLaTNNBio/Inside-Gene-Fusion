@@ -146,10 +146,10 @@ def create_tr_dataset(kmer_dataset, path_to_save_dataset):
                 writer.writerow(row)
 
 def main():
-    dataset_path = "./gene-fusion-kmer-main/dataset/"
-    kmers_path = "./gene-fusion-kmer-main/data/kmers_6/"
-    trans_path = "./gene-fusion-kmer-main/data/transcripts/"
-    reads_path = "./gene-fusion-kmer-main/data/gt_shredder_150/"
+    dataset_path = "./source/gene-fusion-kmer-main/dataset/"
+    kmers_path = "./source/gene-fusion-kmer-main/data/kmers_6/"
+    trans_path = "./source/gene-fusion-kmer-main/data/transcripts/"
+    reads_path = "./source/gene-fusion-kmer-main/data/gt_shredder_150/"
     n_word = 20
     k = 6
     fastq_files = os.listdir(trans_path)
