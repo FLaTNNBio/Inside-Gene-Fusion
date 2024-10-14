@@ -34,7 +34,7 @@ After the processing of the genes, into the folder ```transcripts``` is possible
 
 ```bash
 cd source/gene_fusion_kmer/data
-python3 download_transcript.py
+python3 download_transcripts.py
 ```
 
 ## 1. Sentence-Based Tool
