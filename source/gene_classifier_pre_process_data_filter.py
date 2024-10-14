@@ -79,7 +79,7 @@ def run_shredder(input_fastq, out_file):
 
 # Run the shredding process
 def gt_shredder_df(fastq_files,trans_path):
-    out_dir = "./gene-fusion-kmer-main/data/gt_shredder_150/"
+    out_dir = "./source/gene-fusion-kmer-main/data/gt_shredder_150/"
     for fastq in fastq_files:
         input_fastq = os.path.join(trans_path, fastq)
         print(input_fastq)
