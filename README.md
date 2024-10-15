@@ -142,6 +142,7 @@ python3 source/gene_fusion_hypergraph.py
 
 ## Trained Models
 The DNABERT fine-tuned models can be retrived to the following link: [Fine Tuned Models](https://drive.google.com/drive/folders/1hfqLJO-TxMcThhgNtDNPQOKnA0zsMJ9L)
+It's suggested to move the models inside the source folder to match the paths
 
 ## Test
 All the dataset and the model are saved at the end of each script, to give the possibity to work with them and develop new scripts, into the test folder is possible to find the script to run the saved models on new ad hoc data
