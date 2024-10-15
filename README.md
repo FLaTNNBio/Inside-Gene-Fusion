@@ -27,8 +27,8 @@ It's necessary the gt-shredder from genome tool
 ```bash
 apt install genometools
 ```
-
-Take care to change the paths and the name of the dataset inside the script to match the personalized experiments.
+### Important notes
+Take care to change the paths and the name of the dataset inside the scripts to match the personalized experiments.
 
 ## Download Gene Trascripts
 Into the data folder, there is the file ```download_transcript.py``` needed to dowload the gene transcript inside the file ```genes_panel.txt``` 
