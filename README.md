@@ -84,7 +84,7 @@ python3 source/dnabert_geneclassifier_fine_tune.py
 Ensure that you modify the ```n_labels``` variable to match the number of labels in your customized dataset.
 
 ### Train Fusion Classifier Model
-To identify a DNA sequence as chimeric or not, a Fusion Classifier model is trained on the embedding representation of the sequences given from the fine-tuned DNABERT.
+To identify a DNA sequence as chimeric or not, a Fusion Classifier model is trained on the embedding representation of the sequences given from the fine-tuned gene classifier DNABERT.
 To train Fusion classifier, a set of chimeric and non-chimeric reads is generated from the same reference set of genes used for training Gene classifier. Then, for
 each read all the sentences of length ```n_words``` are generated and then provided as input to Gene classifier, previously trained. Gene classifier includes an embedding
 layer, as well as several classification layers. The outputs of the embedding layer for all the generated sentences are grouped into a single embedding matrix, which
