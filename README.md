@@ -35,7 +35,7 @@ Into the data folder, there is the file ```download_transcript.py``` needed to d
 After the processing of the genes, into the folder ```transcripts``` is possible to find the fastq files of the trancripts for each gene.
 
 ```bash
-cd source/gene_fusion_kmer/data
+cd source/gene_fusion_kmer-main/data
 python3 download_transcripts.py
 ```
 
