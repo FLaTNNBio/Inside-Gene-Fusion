@@ -85,13 +85,8 @@ Ensure that you modify the ```n_labels``` variable to match the number of labels
 
 ### Train Fusion Classifier Model
 To identify a DNA sequence as chimeric or not, a Fusion Classifier model is trained on the embedding representation of the sequences given from the fine-tuned DNABERT.
-The sentence-based representation previously described above is in turn exploited by a DL-based model for the detection of chimeric reads,
-built as an ensemble of two sub-models: Gene classifier and Fusion classifier. The goal of Gene classifier is to classify a sentence into the gene from which it is
-generated. It is trained using all the sentences derived from non-chimeric reads extracted from the transcripts of a reference set of genes (see the following figure).
-
-
 To train Fusion classifier, a set of chimeric and non-chimeric reads is generated from the same reference set of genes used for training Gene classifier. Then, for
-each read all the sentences of length n_words are generated and then provided as input to Gene classifier, previously trained. Gene classifier includes an embedding
+each read all the sentences of length ```n_words``` are generated and then provided as input to Gene classifier, previously trained. Gene classifier includes an embedding
 layer, as well as several classification layers. The outputs of the embedding layer for all the generated sentences are grouped into a single embedding matrix, which
 constitutes the input for Fusion classifier. Then, Fusion classifier uses such embedding matrices to distinguish between reads that arise from the fusion of
 two genes and reads that originate from a single gene.
