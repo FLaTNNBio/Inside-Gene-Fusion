@@ -230,7 +230,7 @@ def compute_roc_auc(loader):
 
 def main():
     # Load the fine-tuned model and tokenizer
-    model_name = "./fine_tuned_dna_bert"  # Path to your fine-tuned model
+    model_name = "./fine_tuned_fusion_dna_bert"  # Path to your fine-tuned model
 
     df_fused_loaded = pd.read_csv('./df_fused_with_debruijn_edges.csv')
     df_fused_loaded['debruijn_edges'] = df_fused_loaded['debruijn_edges'].apply(lambda x: set(ast.literal_eval(x)))
