@@ -278,7 +278,7 @@ def main():
     model_name = "zhihan1996/DNA_bert_6"
     tokenizer = BertTokenizer.from_pretrained(model_name)
     # Load the fine-tuned model and tokenizer
-    model_name = "./fine_tuned_fusion_dna_bert"  # Path to your fine-tuned model
+    model_name = "./source/fine_tuned_fusion_dna_bert"  # Path to your fine-tuned model
     # Load the fine-tuned model for sequence classification
     load_model = BertForSequenceClassification.from_pretrained(model_name)
 
