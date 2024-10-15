@@ -104,6 +104,9 @@ Now the Fusion Classifier can be trained running the following script:
 ```bash
 python3 source/gene_fusion_dnn.py
 ```
+
+All the trained model are saved into the source folder
+
 ## Graph Based Tool
 To overcome the limitations of the sentence-based approach, we employ a more advanced graph-based approach, utilizing De Bruijn graphs.In a De Bruijn graph, nodes represent k-mers, and edges indicate overlaps between consecutive k-mers. By applying GNNs, we are able to capture the complex topological dependencies between nodes through message-passing mechanisms. GNNs allow nodes to aggregate information from neighboring nodes, effectively learning intricate patterns that are essential for accurately identifying fusion events.
 
