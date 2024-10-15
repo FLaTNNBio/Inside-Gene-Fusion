@@ -72,7 +72,7 @@ def train_DNABERT(model,tokenizer, dataset):
         weight_decay=0.01,               # Strength of weight decay
         logging_dir='./logs',            # Directory for storing logs
         logging_steps=10,                # Log every 10 steps
-        eval_strategy="epoch",     # Evaluate every epoch
+        evaluation_strategy="epoch",     # Evaluate every epoch
         save_steps=500                   # Save every 500 steps
     )
 
