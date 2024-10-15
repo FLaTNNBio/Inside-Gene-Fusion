@@ -28,6 +28,7 @@ It's necessary the gt-shredder from genome tool
 apt install genometools
 ```
 ### Important notes
+Is preferible to run the scripts from Inside-Gene-Fusion folder.
 Take care to change the paths and the name of the dataset inside the scripts to match the personalized experiments.
 
 ## Download Gene Trascripts
