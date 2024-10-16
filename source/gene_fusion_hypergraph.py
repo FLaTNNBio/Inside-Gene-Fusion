@@ -311,7 +311,7 @@ def main():
     loss_fn = torch.nn.BCEWithLogitsLoss()  # Binary Cross-Entropy Loss with logits
     
 
-    dataset_with_bert = torch.load('../dataset_with_bert_hyper.pt')
+    dataset_with_bert = torch.load('./dataset_with_bert_hyper.pt')
     
 
     # Define split ratios
