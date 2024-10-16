@@ -27,8 +27,13 @@ It's necessary the gt-shredder from genome tool
 ```bash
 apt install genometools
 ```
+
 ### Conda
 The project is tested on a Conda Enviroment with the needed requirements.
+
+```bash
+conda create --name <env_name> --file requirements.txt
+```
 
 ### Important notes
 Is preferible to run the scripts from Inside-Gene-Fusion folder.
