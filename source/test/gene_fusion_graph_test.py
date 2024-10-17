@@ -97,9 +97,9 @@ def main():
 
     # Load the saved GCN model
     model_path = './gcn_model.pth'  # Path to your saved GCN model
-    input_dim = 128  # Set the input dimension of your GCN model
-    hidden_dim = 128  # Set hidden layer dimension
-    output_dim = 1  # Binary classification output
+    input_dim = 768  # BERT embedding size
+    hidden_dim = 128  # Size of hidden layer in GCN
+    output_dim = 1    # For binary classification, we need 1 output
 
     model = GCN(input_dim=input_dim, hidden_dim=hidden_dim, output_dim=output_dim)
     model.load_state_dict(torch.load(model_path))
