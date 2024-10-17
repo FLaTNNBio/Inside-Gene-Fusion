@@ -103,7 +103,7 @@ def test_model():
 
     # Load the saved model
     model_save_path = './hypergraph_model.pth'
-    input_dim = 128  # Set according to your input feature size
+    input_dim = 768  # Set according to your input feature size
     hidden_dim = 128  # Set hidden dimension
     output_dim = 1  # Binary classification
 
