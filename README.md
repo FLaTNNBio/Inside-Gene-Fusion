@@ -32,7 +32,7 @@ apt install genometools
 The project is tested on a Conda Enviroment with the needed requirements.
 
 ```bash
-conda create --name <env_name> --file requirements.txt
+conda create --name inside-gene-fusion --file requirements.txt
 ```
 
 ### Important notes
