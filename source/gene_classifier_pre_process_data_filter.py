@@ -142,11 +142,25 @@ def create_tr_dataset(kmer_dataset, path_to_save_dataset):
                 row = {'sentence': trigram, 'label':label}#the label has to specified if the nword is fused or not
                 writer.writerow(row)
 
+def check_and_create_directory(directory_path):
+    if not os.path.exists(directory_path):
+        print(f"Directory does not exist. Creating {directory_path}...")
+        os.makedirs(directory_path)
+    else:
+        print(f"Directory {directory_path} already exists.")
+
 def main():
     dataset_path = "./source/gene-fusion-kmer-main/dataset/"
     kmers_path = "./source/gene-fusion-kmer-main/data/kmers_6/"
     trans_path = "./source/gene-fusion-kmer-main/data/transcripts/"
     reads_path = "./source/gene-fusion-kmer-main/data/gt_shredder_150/"
+
+     # Check and create directories if they do not exist
+    check_and_create_directory(dataset_path)
+    check_and_create_directory(kmers_path)
+    check_and_create_directory(trans_path)
+    check_and_create_directory(reads_path)
+    
     n_word = 20
     k = 6
     fastq_files = os.listdir(trans_path)
