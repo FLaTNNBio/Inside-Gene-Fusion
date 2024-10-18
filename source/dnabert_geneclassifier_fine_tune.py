@@ -88,7 +88,12 @@ def train_DNABERT(model,tokenizer, dataset):
     # Train the model
     trainer.train()
 
-
+def check_and_create_directory(directory_path):
+    if not os.path.exists(directory_path):
+        print(f"Directory does not exist. Creating {directory_path}...")
+        os.makedirs(directory_path)
+    else:
+        print(f"Directory {directory_path} already exists.")
 
 def load_DNABERT_model(model_name):
 
@@ -105,7 +110,9 @@ def main():
     tokenizer, model = DNABERT_setting("zhihan1996/DNA_bert_6",n_labels)
     dataset = create_dataset(df_fused,tokenizer)
     train_DNABERT(model,tokenizer, dataset)
-    model.save_pretrained('./fine_tuned_gene_classifier_dna_bert')
+    models_path = './source/models/'
+    check_and_create_directory(models_path)
+    model.save_pretrained('./source/models/fine_tuned_gene_classifier_dna_bert')
 
 if __name__ == "__main__":
     main()
