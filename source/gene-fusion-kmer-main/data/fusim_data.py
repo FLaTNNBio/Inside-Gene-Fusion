@@ -26,7 +26,7 @@ def run_fusion(gene1, gene2, fusim_fasta_dir_path, fusim_txt_dir_path):
         return None
 
 if __name__ == '__main__':
-    genes_panel_path = "genes_panel.txt"
+    genes_panel_path = "./source/gene-fusion-kmer-main/data/genes_panel.txt"
     data_path = "./source/gene-fusion-kmer-main/data/fusim_data"
     fusim_output_path = os.path.join(data_path, "fusim_output")
     fusim_fasta_dir_path = os.path.join(fusim_output_path, "fusim_fasta_dir")
