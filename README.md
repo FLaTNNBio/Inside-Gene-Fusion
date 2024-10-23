@@ -78,14 +78,14 @@ java -jar ./fusim-0.2.2/fusim.jar \
         --gene-model=./fusim-0.2.2/refFlat.txt \
         --fusions=10 \
         --reference=./fusim-0.2.2/hg19.fa \
-        --fasta-output=./source/gene-fusion-kmer-main/datasets/fusion_gene1_gene2.fasta \
-        --text-output=./source/gene-fusion-kmer-main/datasets/fusion_gene1_gene2.txt \
+        --fasta-output=dir_path/fusion_gene1_gene2.fasta \
+        --text-output=dir_path/fusion_gene1_gene2.txt \
         -1 gene1 \
         -2 gene2 \
         --cds-only \
         --auto-correct-orientation
 ```
-Run the following python script `fusim_dataset.py` to form all possible merges between genes contained in `genes_panel.txt`.
+Run the following python script `source/gene-fusion-kmer-main/data/fusim_dataset.py` to form all possible merges between genes contained in `genes_panel.txt`.
 
 ### ART ILLUMINA
 ART ILLUMINA is the tool that allows you to obtain read synthetics from fasta files.
@@ -96,10 +96,10 @@ apt install art-nextgen-simulation-tools
 ```
 
 ART ILLUMINA takes a folder of fasta files and returns the synthetic reads.
-Run the following python script `art_dataset.py` to get the reads of all fasta files obtained from fusim.
+Run the following python script `source/gene-fusion-kmer-main/data/art_dataset.py` to get the reads of all fasta files obtained from fusim.
 
 ### Create Non Chimeric Datasets 
-In order to create a `no_chimeric` datasets coming from the dowloaded transcripts to train the future models, run the  `source/gene-fusion-kmer-main/datasets/create_chimeric_datasets.py`.
+In order to create a `no_chimeric` datasets coming from the dowloaded transcripts to train the future models, run the  `source/gene-fusion-kmer-main/datasets/create_chimeric_no_chimeric.py`.
 The non chimeric dataset will saved in `source/gene-fusion-kmer-main/datasets/` with the name `dataset_non_chimeric`.
 
 ---
