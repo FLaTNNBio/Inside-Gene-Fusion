@@ -371,7 +371,7 @@ def main():
     print(f"Test ROC AUC: {test_roc_auc:.4f}")
     
     # Save the model state_dict after training
-    model_save_path = './hypergraph_model.pth'
+    model_save_path = './source/models/hypergraph_model.pth'
     torch.save(model.state_dict(), model_save_path)
     print(f"Model saved to {model_save_path}")
 
