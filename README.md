@@ -48,6 +48,44 @@ cd source/gene_fusion_kmer-main/data
 python3 download_transcripts.py
 ```
 
+## Create Synthetic Data
+Is possible to create synthetic dataset using the ```fusim``` from the dowloaded gene transcripts using ```download_transcript.py```.
+
+To install fusim:
+```shell
+wget https://github.com/aebruno/fusim/raw/master/releases/fusim-0.2.2-bin.zip
+unzip fusim-0.2.2-bin.zip
+rm fusim-0.2.2-bin.zip
+
+wget -O refFlat.txt.gz http://hgdownload.cse.ucsc.edu/goldenPath/hg19/database/refFlat.txt
+gunzip refFlat.txt.gz
+mv refFlat.txt fusim-0.2.2/refFlat.txt
+
+wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/chromFa.tar.gz
+tar -xzf chromFa.tar.gz
+cat chr*.fa > fusim-0.2.2/hg19.fa
+rm chromFa.tar.gz
+rm chr*.fa
+
+apt install samtools
+samtools faidx fusim-0.2.2/hg19.fa
+```
+
+To run fusim on two genes `gene1` and `gene2`, use the following command specifying `dir_path`:
+```shell
+java -jar ./fusim-0.2.2/fusim.jar \
+        --gene-model=./fusim-0.2.2/refFlat.txt \
+        --fusions=10 \
+        --reference=./fusim-0.2.2/hg19.fa \
+        --fasta-output=dir_path/fusion_gene1_gene2.fasta \
+        --text-output=dir_path/fusion_gene1_gene2.txt \
+        -1 gene1 \
+        -2 gene2 \
+        --cds-only \
+        --auto-correct-orientation
+```
+Run the following python script `fusim_dataset.py` to form all possible merges between genes contained in `genes_panel.txt`.
+
 ## 1. Sentence-Based Tool
 ### Overview
 This approach is based on the definition of
