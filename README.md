@@ -98,7 +98,7 @@ apt install art-nextgen-simulation-tools
 ART ILLUMINA takes a folder of fasta files and returns the synthetic reads.
 Run the following python script `source/gene-fusion-kmer-main/data/art_dataset.py` to get the reads of all fasta files obtained from fusim.
 
-### Create Non Chimeric Datasets 
+### Create Chimeric and no Chimeric Datasets 
 In order to create a `no_chimeric` datasets coming from the dowloaded transcripts to train the future models, run the  `source/gene-fusion-kmer-main/datasets/create_chimeric_no_chimeric.py`.
 The non chimeric dataset will saved in `source/gene-fusion-kmer-main/datasets/` with the name `dataset_non_chimeric`.
 
