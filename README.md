@@ -72,13 +72,14 @@ samtools faidx fusim-0.2.2/hg19.fa
 ```
 
 To run fusim on two genes `gene1` and `gene2`, use the following command specifying `dir_path`:
+
 ```shell
 java -jar ./fusim-0.2.2/fusim.jar \
         --gene-model=./fusim-0.2.2/refFlat.txt \
         --fusions=10 \
         --reference=./fusim-0.2.2/hg19.fa \
-        --fasta-output=dir_path/fusion_gene1_gene2.fasta \
-        --text-output=dir_path/fusion_gene1_gene2.txt \
+        --fasta-output=./source/gene-fusion-kmer-main/datasets/fusion_gene1_gene2.fasta \
+        --text-output=./source/gene-fusion-kmer-main/datasets/fusion_gene1_gene2.txt \
         -1 gene1 \
         -2 gene2 \
         --cds-only \
@@ -97,8 +98,9 @@ apt install art-nextgen-simulation-tools
 ART ILLUMINA takes a folder of fasta files and returns the synthetic reads.
 Run the following python script `art_dataset.py` to get the reads of all fasta files obtained from fusim.
 
-### Create Chimeric Datasets 
-In order to create a `chimeric` and `no_chimeric` datasets to train the future models, run the  `source/gene-fusion-kmer-main/datasets/create_chimeric_datasets.py`.
+### Create Non Chimeric Datasets 
+In order to create a `no_chimeric` datasets coming from the dowloaded transcripts to train the future models, run the  `source/gene-fusion-kmer-main/datasets/create_chimeric_datasets.py`.
+The non chimeric dataset will saved in `source/gene-fusion-kmer-main/datasets/` with the name `dataset_non_chimeric`.
 
 ---
 
