@@ -55,6 +55,6 @@ def main(dtc,dtnc):
     print("Embeddings e label salvati nel file embeddings_with_labels.pt")
 
 if __name__ == "__main__":
-    dtc = "source/gene-fusion-kmer-main/dataset/dataset_chimeric2.fastq"
+    dtc = "source/gene-fusion-kmer-main/dataset/dataset_chimeric.fastq"
     dtnc = "source/gene-fusion-kmer-main/dataset/dataset_non_chimeric.fastq"
     main(dtc,dtnc)
