@@ -84,7 +84,7 @@ def main():
     df_fused.to_csv('./df_fused.csv', index=False)
 
     df_fused['debruijn_edges'] = df_fused['kmerized_sequence'].apply(process_kmer_sequence)
-    df_fused.to_csv('./df_fused_with_debruijn_edges.csv', index=False)
+    df_fused.to_csv('./source/gene-fusion-kmer-main/dataset/df_fused_with_debruijn_edges.csv', index=False)
 
 if __name__ == "__main__":
     main()
