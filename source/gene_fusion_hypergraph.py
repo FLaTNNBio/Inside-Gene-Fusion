@@ -5,6 +5,7 @@ from transformers import BertForSequenceClassification, BertTokenizer
 import numpy as np
 from torch_geometric.loader import DataLoader
 from torch.utils.data import random_split
+from torch_geometric.data import Data
 import torch.nn as nn
 import torch.nn.functional as F
 from torch_geometric.nn import HypergraphConv, global_mean_pool
