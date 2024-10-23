@@ -321,7 +321,7 @@ def main():
         f.write(f"F1-Score: {f1:.4f}\n")
         
         # File path to save the trained model
-    model_save_path = './gcn_model.pth'
+    model_save_path = './source/models/gcn_model.pth'
     
     # Save the model state_dict after training
     torch.save(model.state_dict(), model_save_path)
