@@ -86,6 +86,19 @@ java -jar ./fusim-0.2.2/fusim.jar \
 ```
 Run the following python script `fusim_dataset.py` to form all possible merges between genes contained in `genes_panel.txt`.
 
+### ART ILLUMINA
+ART ILLUMINA is the tool that allows you to obtain read synthetics from fasta files.
+
+To install ART ILLUMINA install the following package:
+```shell
+apt install art-nextgen-simulation-tools
+```
+
+ART ILLUMINA takes a folder of fasta files and returns the synthetic reads.
+Run the following python script `art_dataset.py` to get the reads of all fasta files obtained from fusim.
+
+---
+
 ## 1. Sentence-Based Tool
 ### Overview
 This approach is based on the definition of
