@@ -287,19 +287,19 @@ def main():
     model_name = "zhihan1996/DNA_bert_6"
     tokenizer = BertTokenizer.from_pretrained(model_name)
     # Load the fine-tuned model and tokenizer
-    model_name = "./source/fine_tuned_fusion_dna_bert"  # Path to your fine-tuned model
+    model_name = "./source/models/fine_tuned_fusion_dna_bert"  # Path to your fine-tuned model
     # Load the fine-tuned model for sequence classification
     load_model = BertForSequenceClassification.from_pretrained(model_name)
     
     
-    df_fused_loaded = pd.read_csv("./df_fused_with_debruijn_edges.csv")
+    df_fused_loaded = pd.read_csv("./source/gene-fusion-kmer-main/dataset/df_fused_with_debruijn_edges.csv")
     #df_fused_loaded['debruijn_edges'] = df_fused_loaded['debruijn_edges'].apply(lambda x: set(ast.literal_eval(x)))
     print(df_fused_loaded.head())
     hypergraph_results = process_dataset(df_fused_loaded)
     # Prepare the dataset with BERT-based node features
     dataset_with_bert = prepare_hypergraph_with_bert(hypergraph_results, load_model, tokenizer, device)
     loader = DataLoader(dataset_with_bert, batch_size=32, shuffle=True)
-    torch.save(dataset_with_bert, './dataset_with_bert_hyper.pt')
+    torch.save(dataset_with_bert, './source/gene-fusion-kmer-main/dataset/dataset_with_bert_hyper.pt')
     
     
     # Initialize the model
@@ -311,7 +311,7 @@ def main():
     loss_fn = torch.nn.BCEWithLogitsLoss()  # Binary Cross-Entropy Loss with logits
     
 
-    dataset_with_bert = torch.load('./dataset_with_bert_hyper.pt')
+    dataset_with_bert = torch.load('./source/gene-fusion-kmer-main/dataset/dataset_with_bert_hyper.pt')
     
 
     # Define split ratios
