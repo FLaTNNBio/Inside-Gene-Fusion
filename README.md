@@ -98,7 +98,7 @@ ART ILLUMINA takes a folder of fasta files and returns the synthetic reads.
 Run the following python script `art_dataset.py` to get the reads of all fasta files obtained from fusim.
 
 ### Create Chimeric Datasets 
-In order to create a `chimeric` and `no_chimeric` datasets to train the future models, run the  `create_chimeric_datasets.py`.
+In order to create a `chimeric` and `no_chimeric` datasets to train the future models, run the  `source/gene-fusion-kmer-main/datasets/create_chimeric_datasets.py`.
 
 ---
 
