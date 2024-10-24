@@ -15,7 +15,7 @@ def create_non_chimeric_dataset(input_files, output_file):
 def main():
     
     fastq_directory = "./source/gene-fusion-kmer-main/data/transcripts/"  # Directory containing the FASTQ files
-    dtc = "./source/gene-fusion-kmer-main/dataset/dataset_non_chimeric.fastq"
+    dtnc = "./source/gene-fusion-kmer-main/dataset/dataset_non_chimeric.fastq"
 
 
     # Get all FASTQ files in the specified directory
