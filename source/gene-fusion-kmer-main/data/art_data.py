@@ -18,7 +18,7 @@ if __name__ == '__main__':
     data_path = "./source/gene-fusion-kmer-main/data/fusim_data"
     fusim_output_path = os.path.join(data_path, "fusim_output")
     fusim_fasta_dir_path = os.path.join(fusim_output_path, "fusim_fasta_dir")
-    art_output_path = os.path.join(data_path, "art_output")
+    art_output_path = os.path.join("./source/gene-fusion-kmer-main/data/", "art_output")
     os.makedirs(art_output_path, exist_ok=True)
 
     fasta_files = os.listdir(fusim_fasta_dir_path)
