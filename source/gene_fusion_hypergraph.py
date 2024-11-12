@@ -291,6 +291,7 @@ def main():
     model_name = "./source/models/fine_tuned_fusion_dna_bert"  # Path to your fine-tuned model
     # Load the fine-tuned model for sequence classification
     load_model = BertForSequenceClassification.from_pretrained(model_name)
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
     
     df_fused_loaded = pd.read_csv("./source/gene-fusion-kmer-main/dataset/df_fused_with_debruijn_edges.csv")
@@ -304,7 +305,7 @@ def main():
     
     
     # Initialize the model
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    
     model = HypergraphNet(in_channels=768, hidden_channels=128, out_channels=1).to(device)  # Binary classification, out_channels=1
     
     # Define optimizer and loss function for binary classification
